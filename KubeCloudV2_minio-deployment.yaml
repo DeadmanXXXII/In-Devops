@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minio
+  template:
+    metadata:
+      labels:
+        app: minio
+    spec:
+      containers:
+      - name: minio
+        image: minio/minio
+        args:
+        - "server"
+        - "/data"
+        env:
+        - name: MINIO_ACCESS_KEY
+          value: "your-access-key"
+        - name: MINIO_SECRET_KEY
+          value: "your-secret-key"
+        ports:
+        - containerPort: 9000  # This is the port MinIO listens on
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-service
+spec:
+  selector:
+    app: minio
+  ports:
+    - protocol: TCP
+      port: 9000  # This is the port exposed by the service
+      targetPort: 9000  # This is the port MinIO container listens on
+  type: ClusterIP
