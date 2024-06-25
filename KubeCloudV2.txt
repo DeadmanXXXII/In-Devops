@@ -1,5 +1,5 @@
 Walkthrough of Each Option and What It Can Do
-
+ 
 Option 1: 
 
 Provision InfrastructureFunction: provision_infrastructure()Description: Initiates the provisioning of cloud infrastructure using Terraform.
