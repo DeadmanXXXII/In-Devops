@@ -1,0 +1,10 @@
+# requirements.txt
+
+# Terraform CLI for provisioning infrastructure
+terraform
+
+# Kubernetes CLI for deploying and managing applications
+kubectl
+
+# Zenity for graphical file selection dialogs
+zenity
